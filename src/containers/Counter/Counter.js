@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
+import * as actionTypes from '../../store/actions'
 
 class Counter extends Component {
 
@@ -17,9 +18,9 @@ class Counter extends Component {
                 <button onClick={this.props.onStoreResult}>Click to save</button>
                 <ul>
                     {this.props.storedResults.map(result => {
-                        return <li key={result.id} onClick={this.props.onDeleteResult}>
+                        return (<li key={result.id} onClick={() => this.props.onDeleteResult(result.id)}>
                             {result.id.getHours()}:{result.id.getMinutes()}:{result.id.getSeconds()}
-                            ------ {result.value}</li>
+                            ------ {result.value}</li>)
                     })}
                 </ul>
             </div>
@@ -36,12 +37,12 @@ const mapStateToProps = state => {
 
 const mapDispathToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch({ type: 'INCREMENT' }),
-        onDecrementCounter: () => dispatch({ type: 'DECREMENT' }),
-        onAdd5Counter: () => dispatch({ type: 'ADD5', value: 10 }),
-        onSubtract5Counter: () => dispatch({ type: 'SUBTRACT5' }),
-        onStoreResult: () => dispatch({ type: 'STORE_RESULT' }),
-        onDeleteResult: () => dispatch({ type: 'DELETE_RESULT' })
+        onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT }),
+        onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
+        onAdd5Counter: () => dispatch({ type: actionTypes.ADD5, value: 10 }),
+        onSubtract5Counter: () => dispatch({ type: actionTypes.SUBTRACT5 }),
+        onStoreResult: () => dispatch({ type: actionTypes.STORE_RESULT }),
+        onDeleteResult: (id) => dispatch({ type: actionTypes.DELETE_RESULT, resultId: id })
     }
 };
 
