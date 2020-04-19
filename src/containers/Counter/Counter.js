@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
-import { increment, decrement, add10, subtract5, onStoreResult, onDeleteResult } from '../../store/actions'
+import { increment, decrement, add10, subtract5, onStoreResult, onDeleteResult } from '../../store/actions/index'
 // import * as actionCreators from '../../store/actions'
 
 class Counter extends Component {
