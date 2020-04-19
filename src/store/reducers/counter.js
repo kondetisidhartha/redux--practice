@@ -15,7 +15,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         counter: state.counter - 1
       }
-    case actionTypes.ADD5:
+    case actionTypes.ADD10:
       return {
         ...state,
         counter: state.counter + action.value
